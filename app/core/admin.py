@@ -9,11 +9,12 @@ from core import models
 
 
 class UserAdmin(BaseUserAdmin):
-    """Define the admin pages for users"""
-    ordering =['id']
+    """Define the admin pages for users."""
+    ordering = ['id']
     list_display = ['email', 'name']
-    fielsets = (
+    fieldsets = (
         (None, {'fields': ('email', 'password')}),
+        (_('Personal Info'), {'fields': ('name',)}),
         (
             _('Permissions'),
             {
