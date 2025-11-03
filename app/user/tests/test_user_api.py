@@ -5,7 +5,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
-from rest_framework.test import APIclient
+from rest_framework.test import APIClient
 from rest_framework import status
 
 
@@ -21,10 +21,10 @@ class PublicUserApiTests(TestCase):
     """Test the public features of user API."""
 
     def setUp(self):
-        self.client = APIclient()
+        self.client = APIClient()
 
-    def test_create_user_succes(self):
-        """Test cvreating a user is succesful."""
+    def test_create_user_success(self):
+        """Test creating a user is succesful."""
         payload = {
             'email': 'test@example.com',
             'password': 'testpass123',
@@ -53,8 +53,8 @@ class PublicUserApiTests(TestCase):
         """Test an error is returned if password less than 5 chars"""
         payload = {
             'email': 'test@example.com',
-            'password': 'testpass123',
-            'name': 'Test Name',
+            'password': 'pw',
+            'name': 'Test name',
         }
         res = self.client.post(CREATE_USER_URL, payload)
 
